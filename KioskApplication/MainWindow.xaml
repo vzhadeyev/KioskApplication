@@ -7,35 +7,52 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1278" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Background>
-        <ImageBrush ImageSource="plane.jpg"/>
+        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
     </Window.Background>
-    <Grid Width="800" Height="650">
+    <Grid Width="600" Height="Auto">
         <Grid.Background>
-            <SolidColorBrush Color="#FFFBFBFB" Opacity="0.5"/>
+            <SolidColorBrush Color="#FFFBFBFB"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
+
         <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="1" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="22" FontWeight="SemiBold">Распечатка посадочного талона</TextBlock>
+            <TextBlock Grid.Row="2" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="18" FontWeight="Bold">Введите 4-значный код</TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox x:Name="PinTextBox" Grid.Column="1" Margin="5,20,5,5"  
+
+            <TextBox x:Name="PinTextBox" Grid.Column="1" Margin="5,5,5,5"  
                      TextAlignment="Center"
                      VerticalAlignment="Center"
-                     FontSize="66.667" AllowDrop="False" 
+                     FontSize="50" AllowDrop="False" 
                      IsTabStop="False" 
                      IsHitTestVisible="False"
                      HorizontalContentAlignment="Center" 
                      VerticalContentAlignment="Center" 
                      MaxLines="1" MaxLength="4" 
                      FontFamily="Segoe UI Semibold" 
-                     Foreground="White" BorderBrush="Black" 
-                     BorderThickness="0,0,0,4"
+                     Foreground="#FF0087E1" BorderBrush="Black" 
+                     BorderThickness="1,1,1,4"
                      Text="{Binding Path=Pin }">
                 <TextBox.Background>
                     <SolidColorBrush Color="White" Opacity="0.2"/>
@@ -46,25 +63,16 @@
                     HorizontalAlignment="Left"
                     Margin="15"
                     FontSize="48" FontWeight="Bold" 
-                    Style="{StaticResource NumericButton}" 
                     RenderTransformOrigin="3.966,0.99"
-                    Width="70" Height="80">
+                    Width="70" Height="80" Background="Black" Focusable="False" IsTabStop="False"
+                    Click="BackSpaceButton_Click">
                 <Button.OpacityMask>
-                    <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/backspace-arrow.png" TileMode="Tile" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="Images/backspace-arrow.png" Stretch="Uniform"/>
                 </Button.OpacityMask>
-
-
-                <!--<Button.Content>
-                    <Image Source="pack://siteoforigin:,,,/Resources/backspace-arrow.png" Margin="2" SnapsToDevicePixels="True">
-                        <Image.OpacityMask>
-                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/backspace-arrow.png"/>
-                        </Image.OpacityMask>
-                    </Image>
-                </Button.Content>-->
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid Height="420" Width="360">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -78,16 +86,17 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="Button1" Grid.Column="0" Grid.Row="0" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">1</Button>
-                <Button x:Name="Button2" Grid.Column="1" Grid.Row="0" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">2</Button>
-                <Button x:Name="Button3" Grid.Column="2" Grid.Row="0" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">3</Button>
-                <Button x:Name="Button4" Grid.Column="0" Grid.Row="1" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">4</Button>
-                <Button x:Name="Button5" Grid.Column="1" Grid.Row="1" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">5</Button>
-                <Button x:Name="Button6" Grid.Column="2" Grid.Row="1" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">6</Button>
-                <Button x:Name="Button7" Grid.Column="0" Grid.Row="2" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">7</Button>
-                <Button x:Name="Button8" Grid.Column="1" Grid.Row="2" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">8</Button>
-                <Button x:Name="Button9" Grid.Column="2" Grid.Row="2" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">9</Button>
-                <Button x:Name="Button0" Grid.Column="1" Grid.Row="3" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="NumericButton_Click">0</Button>
+                <Button x:Name="Button1" Grid.Column="0" Grid.Row="0" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">1</Button>
+                <Button x:Name="Button2" Grid.Column="1" Grid.Row="0" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">2</Button>
+                <Button x:Name="Button3" Grid.Column="2" Grid.Row="0" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">3</Button>
+                <Button x:Name="Button4" Grid.Column="0" Grid.Row="1" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">4</Button>
+                <Button x:Name="Button5" Grid.Column="1" Grid.Row="1" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">5</Button>
+                <Button x:Name="Button6" Grid.Column="2" Grid.Row="1" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">6</Button>
+                <Button x:Name="Button7" Grid.Column="0" Grid.Row="2" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">7</Button>
+                <Button x:Name="Button8" Grid.Column="1" Grid.Row="2" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">8</Button>
+                <Button x:Name="Button9" Grid.Column="2" Grid.Row="2" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">9</Button>
+                <Button x:Name="Button0" Grid.Column="0" Grid.Row="3" Margin="2px" FontSize="48" Style="{StaticResource NumericButton}" Click="NumericButton_Click">0</Button>
+                <Button x:Name="ButtonPrint" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="2px" FontSize="28" Style="{StaticResource PrintButton}" Click="ButtonPrint_Click">Распечатать</Button>
             </Grid>
         </Grid>
     </Grid>

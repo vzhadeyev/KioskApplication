@@ -5,6 +5,34 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <Style TargetType="Button" x:Key="NumericButton">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="9,9,9,9" Background="#FFE8E7E3"  BorderThickness="1" BorderBrush="Black">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="PrintButton">
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7,7,7,7" Background="#FF0060E2"  BorderThickness="1" BorderBrush="Black">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
         <RadialGradientBrush x:Key="DefaultNumericButtonBrush" GradientOrigin="0.496,1.052" SpreadMethod="Reflect">
             <RadialGradientBrush.RelativeTransform>
                 <TransformGroup>
@@ -26,47 +54,5 @@
             <GradientStop Color="White" Offset="0.753"/>
             <GradientStop Color="#FF7D8095" Offset="0.356"/>
         </RadialGradientBrush>
-
-        <Style TargetType="Button" x:Key="NumericButton">
-            <Setter Property="Foreground" Value="WhiteSmoke"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="5,5,5,5" Background="{StaticResource DefaultNumericButtonBrush}" BorderThickness="1" BorderBrush="DarkGray">
-                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            
-            <Style.Triggers>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" Value="{StaticResource PressedNumericButtonBrush}"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="False">
-                    <Setter Property="Background" Value="{StaticResource DefaultNumericButtonBrush}"/>
-                </Trigger>
-                
-                <EventTrigger RoutedEvent="PreviewTouchDown">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
-                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource PressedNumericButtonBrush}" />
-                            </ObjectAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="PreviewTouchUp">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
-                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource DefaultNumericButtonBrush}" />
-                            </ObjectAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-         
     </Application.Resources>
 </Application>
