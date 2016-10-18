@@ -1,0 +1,70 @@
+﻿<Window x:Class="KioskApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KioskApplication"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1278" WindowStyle="None" Topmost="True" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Background>
+        <ImageBrush ImageSource="plane.jpg"/>
+    </Window.Background>
+    <Grid Width="800" Height="650">
+        <Grid.Background>
+            <SolidColorBrush Color="#FFFBFBFB" Opacity="0.5"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="1" Margin="5,20,5,5"  
+                     TextAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="66.667" AllowDrop="False" 
+                     IsTabStop="False" 
+                     IsHitTestVisible="False"
+                     HorizontalContentAlignment="Center" 
+                     VerticalContentAlignment="Center" 
+                     MaxLines="1" MaxLength="4" 
+                     FontFamily="Segoe UI Semibold" Foreground="White" BorderBrush="Black" BorderThickness="0,0,0,4">
+                <TextBox.Background>
+                    <SolidColorBrush Color="White" Opacity="0.2"/>
+                </TextBox.Background> 1234
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid Height="420" Width="360">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Grid.Row="0" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}" Click="Button_Click">1</Button>
+                <Button Grid.Column="1" Grid.Row="0" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">2</Button>
+                <Button Grid.Column="2" Grid.Row="0" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">3</Button>
+                <Button Grid.Column="0" Grid.Row="1" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">4</Button>
+                <Button Grid.Column="1" Grid.Row="1" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">5</Button>
+                <Button Grid.Column="2" Grid.Row="1" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">6</Button>
+                <Button Grid.Column="0" Grid.Row="2" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">7</Button>
+                <Button Grid.Column="1" Grid.Row="2" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">8</Button>
+                <Button Grid.Column="2" Grid.Row="2" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">9</Button>
+                <Button Grid.Column="1" Grid.Row="3" Margin="1px" FontSize="48" FontWeight="Bold" Style="{StaticResource NumericButton}">0</Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
