@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KioskApplication.ViewModels;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace KioskApplication
 {
@@ -19,14 +10,21 @@ namespace KioskApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+        internal MainWindowViewModel ViewModel { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            ViewModel = new MainWindowViewModel();
+            PinTextBox.DataContext = ViewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void NumericButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Clicked");
+            var button = sender as Button;
+            var value = button.Content.ToString();
+            ViewModel.Pin += value;
         }
+
     }
 }

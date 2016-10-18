@@ -60,6 +60,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow.xaml.cs">
@@ -98,13 +99,19 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NHAabD8nSiQPMCrtu1lw_plane%25201.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\plane.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="plane.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backspace.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backspace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backspace-arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
