@@ -60,13 +60,13 @@ namespace KioskApplication
                             PinTextBox.Foreground = new SolidColorBrush(Colors.Red);
                             PinTextBox.FontSize = 36;
                             PinTextBox.Text = "Неверный код!";
+                            return;
                         }
                     }
                 }
             }
             
-            // TO DO:
-
+            // TO DO: 
         }
 
         private void ResetViewModel()
