@@ -5,6 +5,8 @@ using System.IO;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+
 
 namespace KioskApplication
 {
@@ -24,6 +26,8 @@ namespace KioskApplication
 
         private void NumericButton_Click(object sender, RoutedEventArgs e)
         {
+            PinTextBox.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0087E1"));
+            PinTextBox.FontSize = 50;
             var button = sender as Button;
             var value = button.Content.ToString();
             ViewModel.Pin += value;
@@ -41,13 +45,31 @@ namespace KioskApplication
             using (var client = new WebClient())
             {
                 Uri uri = new Uri("http://arman.39ma.ru/files/" + name);
-                client.DownloadFile(uri, saveFileDirectory+name); // synchronusly download file cause we don't want to allow user interract with UI 
+                try
+                {
+                    client.DownloadFile(uri, saveFileDirectory + name); // synchronusly download file cause we don't want to allow user interract with UI 
+                    ResetViewModel();
+                }
+                catch (WebException ex)
+                {
+                    if (ex.Response != null)
+                    {
+                        if (((HttpWebResponse)ex.Response).StatusCode == HttpStatusCode.NotFound)
+                        {
+                            ResetViewModel();
+                            PinTextBox.Foreground = new SolidColorBrush(Colors.Red);
+                            PinTextBox.FontSize = 36;
+                            PinTextBox.Text = "Неверный код!";
+                        }
+                    }
+                }
             }
+            
+            // TO DO:
 
-            ResetView();
         }
 
-        private void ResetView()
+        private void ResetViewModel()
         {
             ViewModel.Pin = string.Empty;
         }
