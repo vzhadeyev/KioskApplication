@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("KioskApplication")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("MIS Labaratory")]
 [assembly: AssemblyProduct("KioskApplication")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
