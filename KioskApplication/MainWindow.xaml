@@ -52,8 +52,8 @@
                      MaxLines="1" MaxLength="4" 
                      FontFamily="Segoe UI Semibold" 
                      Foreground="#FF0087E1" BorderBrush="Black" 
-                     BorderThickness="1,1,1,4"
-                     Text="{Binding Path=Pin }">
+                     BorderThickness="1,1,1,1"
+                     Text="{Binding Path=Pin }" Height="69">
                 <TextBox.Background>
                     <SolidColorBrush Color="White" Opacity="0.2"/>
                 </TextBox.Background>
